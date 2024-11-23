@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="WpfCameraAForge.Cameras"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfCameraAForge"
+             xmlns:vlc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid x:Name="Multi">
+        <!-- Main content goes here -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4,5,12,5" HorizontalAlignment="Left" >
+            <Label FontWeight="Bold" FontSize="16">BARCODE</Label>
+            <TextBox x:Name="txtBarcode" Width="250" BorderThickness="3" FontSize="18" VerticalAlignment="Center"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,10,0">
+            <Button x:Name="btninstaupload" Width="200" Height="30" FontSize="14" Click="btninstaupload_Click">Upload Insta360 Videos</Button>
+        </StackPanel>
+        <!-- Camera Preview Panel -->
+        <Border Grid.Row="1" Background="Black" Margin="5">
+            <!--<vlc:VideoView x:Name="VlcControl"/>-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300*"/>
+                    <ColumnDefinition Width="97*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10,10,10,10">
+                        <WrapPanel x:Name="SnapshotWrapPanel" />
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Background="Gray" Grid.Row="0" Margin="5">
+                            <vlc:VideoView Name="WebcamImage1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <!-- Replace with actual thumbnail control -->
+                        </Border>
+                        <Border Background="Gray" Grid.Row="1" Margin="5">
+                            <vlc:VideoView Name="WebcamImage2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <!-- Replace with actual thumbnail control -->
+                        </Border>
+                        <Border Background="Gray" Grid.Row="2" Margin="5">
+                            <vlc:VideoView Name="WebcamImage3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <!-- Replace with actual thumbnail control -->
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+            
+            <!-- Replace with actual camera preview control -->
+        </Border>
+        <!-- Thumbnails -->
+        <UniformGrid Grid.Row="2" Columns="3" HorizontalAlignment="Stretch" Margin="5">
+            <Border Background="Gray" Margin="5">
+                <vlc:VideoView x:Name="VlcControl2"/>
+                <!-- Replace with actual thumbnail control -->
+            </Border>
+            <Border Background="Gray" Margin="5">
+                <vlc:VideoView x:Name="VlcControl3"/>
+                <!-- Replace with actual thumbnail control -->
+            </Border>
+            <Border Background="Gray" Margin="5">
+                <vlc:VideoView x:Name="VlcControl4"/>
+                <!-- Replace with actual thumbnail control -->
+            </Border>
+        </UniformGrid>
+        <!-- Record and Stop Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="4,5,0,5" HorizontalAlignment="Center" >
+            <Button Content="Record" Tag="pack://application:,,,/Images/recording.png" Style="{StaticResource IconButtonStyle}" Click="RecordButton_Click"/>
+            <Button Content="Stop" Tag="pack://application:,,,/Images/stop.png" Style="{StaticResource IconButtonStyle}" Click="StopRecordButton_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Left" Width="250">
+
+            <Label Name="recordStatus" FontSize="14" Foreground="Red" Content="No Activity"></Label>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

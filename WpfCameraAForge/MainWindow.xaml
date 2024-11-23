@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfCameraAForge.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCameraAForge"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Camera Application" Height="642" Width="1058">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" x:Name="SidebarColumn"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Background="Black" x:Name="Sidebar" Width="200">
+            <Image Source="pack://application:,,,/Images/Logo2.jpg"/>
+            <Button Content="" Click="ToggleSidebar_Click" Tag="pack://application:,,,/Images/menu.png" Style="{StaticResource MenuButtonStyle}"/>
+            <Button Content="Connect Cameras" Tag="pack://application:,,,/Images/live.png" Style="{StaticResource MenuButtonStyle}" Click="ConnectButton_Click" />
+            <Button Content="Disconnect Cameras" Tag="pack://application:,,,/Images/link.png" Style="{StaticResource MenuButtonStyle}" Click="DisconnectButton_Click"/>
+            <Button Content="Settings" Tag="pack://application:,,,/Images/settings2.png" Style="{StaticResource MenuButtonStyle}" Click="CSettingsButton_Click" />
+            <Button Content="Search Recording" Tag="pack://application:,,,/Images/searchv.png" Style="{StaticResource MenuButtonStyle}" Click="RSearchButton_Click"/>
+            <Button Content="Publish Database" Tag="pack://application:,,,/Images/database.png" Style="{StaticResource MenuButtonStyle}" Click="PublishButton_Click"/>
+            <Button Content="Upload Insta 360" Tag="pack://application:,,,/Images/upload.png" Style="{StaticResource MenuButtonStyle}" Click="Insta360Button_Click"/>
+            <Button Content="Exit" Tag="pack://application:,,,/Images/delete.png" Style="{StaticResource MenuButtonStyle}" Click="ExitButton_Click"/>
+            <TextBlock Visibility="Hidden"/>
+            <TextBlock Visibility="Hidden"/>
+            <TextBlock Text="Manager :" Name="txtUserID" Foreground="White" Margin="20,0,0,0" FontSize="16" />
+            <TextBlock Text="Operater :" Name="txtUserType" Foreground="White" Margin="20,0,0,0" FontSize="16" />
+            <TextBlock Text="Shift :" Name="txtShift" Foreground="White" Margin="20,0,0,0" FontSize="16" />
+            <!-- Add other sidebar content here -->
+        </StackPanel>
+
+        <StackPanel Background="Black" VerticalAlignment="Bottom" Width="200">
+            <Image Source="pack://application:,,,/Images/Logo.jpg" />
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" x:Name="MainContent">
+            <local:Cameras x:Name="camerasControl"/>
+        </Grid>
+    </Grid>
+</Window>
