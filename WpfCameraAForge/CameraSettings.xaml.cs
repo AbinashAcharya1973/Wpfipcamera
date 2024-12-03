@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -570,5 +571,6 @@ namespace WpfCameraAForge
         public string UserID { get; set; }
         public string UserName { get; set; }
         public string UserType { get; set; }
+        
     }
 }
